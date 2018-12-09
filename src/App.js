@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      data: []
+    }
+  }
+
+  fetchData = () => {
+    fetch('https://talaikis.com/api/quotes/random/')
+      .then(results => results.json())
+      .then(results => this.setState({data: results}));
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
   render() {
     return (
-      <div className="App">
+      <div id="quote-box">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>
+            Random Quote Generator
+          </h1>
+          <p id="author">{this.state.data.author}</p>
+          <p id="text">{this.state.data.quote}</p>
+          <p>{this.state.data.cat}</p>
+          <button id="new-quote" onClick={this.fetchData}>New Quote</button>
+          <a id="tweet-quote" href="https://twitter.com/intent/tweet">Tweet Quote</a>
         </header>
       </div>
     );
