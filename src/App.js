@@ -27,11 +27,11 @@ class App extends Component {
           <h1>
             Random Quote Generator
           </h1>
-          <p id="author">{this.state.data.author}</p>
-          <p id="text">{this.state.data.quote}</p>
           <p>{this.state.data.cat}</p>
+          <p id="text">{this.state.data.quote}</p>
+          <p id="author">{this.state.data.author}</p>
           <button id="new-quote" onClick={this.fetchData}>New Quote</button>
-          <a id="tweet-quote" href="https://twitter.com/intent/tweet">Tweet Quote</a>
+          <a id="tweet-quote" href="https://twitter.com/intent/tweet?text=">Tweet Quote</a>
         </header>
       </div>
     );
