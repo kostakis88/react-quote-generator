@@ -10,6 +10,39 @@ class App extends Component {
     }
   }
 
+  getInitialState = () => {
+    return {
+      color: [50, 100, 150]
+    };
+  }
+
+  formatColor = (ary) => {
+    return 'rgb(' + ary.join(', ') + ')';
+  }
+
+  isBackDark = () => {
+    let rgb = this.state.color;
+    return rgb.reduce(function(a,b){ return a+b;}) < 127 * 3;
+  }
+
+  applyColor = () => {
+    let color = this.formatColor(this.state.color);
+    document.body.style.background = color;
+  }
+
+  chooseColor = () => {
+    for (let i = 0, random = []; i < 3; i++) {
+      random.push(Math.floor(Math.random()*256));
+    }
+    return random; 
+  }
+  
+  handleClick = () => {
+    this.setState({
+      color: this.chooseColor()
+    });
+  }
+
   fetchData = () => {
     fetch('https://talaikis.com/api/quotes/random/')
       .then(results => results.json())
@@ -18,6 +51,11 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchData();
+    this.applyColor();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.applyColor();
   }
 
   render() {
