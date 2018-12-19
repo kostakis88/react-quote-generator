@@ -6,14 +6,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
-    }
-  }
-
-  getInitialState = () => {
-    return {
+      data: [],
       color: [50, 100, 150]
-    };
+    }
   }
 
   formatColor = (ary) => {
@@ -31,22 +26,26 @@ class App extends Component {
   }
 
   chooseColor = () => {
-    for (let i = 0, random = []; i < 3; i++) {
+    let random = [];
+    for (let i = 0; i < 3; i++) {
       random.push(Math.floor(Math.random()*256));
+      console.log(random);
     }
+    console.log('random', random);
     return random; 
-  }
-  
-  handleClick = () => {
-    this.setState({
-      color: this.chooseColor()
-    });
   }
 
   fetchData = () => {
     fetch('https://talaikis.com/api/quotes/random/')
       .then(results => results.json())
       .then(results => this.setState({data: results}));
+  }
+
+  handleClick = () => {
+    this.setState({
+      color: this.chooseColor()
+    });
+    this.fetchData();
   }
 
   componentDidMount() {
@@ -69,7 +68,7 @@ class App extends Component {
           <p id="text">{this.state.data.quote}</p>
           <p id="author">{this.state.data.author}</p>
           </div>
-          <button id="new-quote" onClick={this.fetchData}>New Quote</button>
+          <button id="new-quote" onClick={this.handleClick}>New Quote</button>
           <button>
           <a id="tweet-quote" href={"https://twitter.com/intent/tweet?text=" + this.state.data.quote + " ~ " + this.state.data.author}>Tweet Quote</a>
           </button>
