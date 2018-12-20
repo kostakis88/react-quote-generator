@@ -29,9 +29,7 @@ class App extends Component {
     let random = [];
     for (let i = 0; i < 3; i++) {
       random.push(Math.floor(Math.random()*256));
-      console.log(random);
     }
-    console.log('random', random);
     return random; 
   }
 
@@ -65,7 +63,7 @@ class App extends Component {
             Random Quote Generator
           </h1>
           <div className="quote-container">
-          <p id="text">{this.state.data.quote}</p>
+          <p id="text" className={this.isBackDark() ? 'white' : 'black'}>{this.state.data.quote}</p>
           <p id="author">{this.state.data.author}</p>
           </div>
           <button id="new-quote" onClick={this.handleClick}>New Quote</button>
