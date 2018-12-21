@@ -59,12 +59,12 @@ class App extends Component {
     return (
       <div id="quote-box">
         <header className="App-header">
-          <h1>
+          <h1 className={this.isBackDark() ? 'white' : 'black'}>
             Random Quote Generator
           </h1>
           <div className="quote-container">
           <p id="text" className={this.isBackDark() ? 'white' : 'black'}>{this.state.data.quote}</p>
-          <p id="author">{this.state.data.author}</p>
+          <p id="author" className={this.isBackDark() ? 'white' : 'black'}>{this.state.data.author}</p>
           </div>
           <button id="new-quote" onClick={this.handleClick}>New Quote</button>
           <button>

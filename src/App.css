@@ -9,7 +9,12 @@
     color: #00ACEE;
     text-decoration: none;
 }
-
 button {
     margin-right: 5px;
+}
+.black{
+    color: #000000;
+}
+.white{
+    color: #fefefe;
 }
