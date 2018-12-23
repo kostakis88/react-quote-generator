@@ -63,7 +63,7 @@ class App extends Component {
             Random Quote Generator
           </h1>
           <div className="quote-container">
-          <p id="text" className={this.isBackDark() ? 'white' : 'black'}>{this.state.data.quote}</p>
+          <p id="text" className={this.isBackDark() ? 'white' : 'black'}>{this.state.data.quote} 404 (Not Found) </p>
           <p id="author" className={this.isBackDark() ? 'white' : 'black'}>{this.state.data.author}</p>
           </div>
           <button id="new-quote" onClick={this.handleClick}>New Quote</button>
