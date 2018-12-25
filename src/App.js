@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   fetchData = () => {
-    fetch('https://talaikis.com/api/quotes/random/')
+    fetch('')
       .then(results => results.json())
       .then(results => this.setState({data: results}));
   }
