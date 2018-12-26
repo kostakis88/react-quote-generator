@@ -12,12 +12,18 @@
 h1 {
     font-size: 3rem;
 }
+.quote-container {
+    border: 1px solid #fefefe;
+}
 #text {
     font-size:2rem;
 }
 #tweet-quote {
     color: #00ACEE;
     text-decoration: none;
+}
+.button-container {
+    margin:1rem;
 }
 button {
     margin-right: 5px;

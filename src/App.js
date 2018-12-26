@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   fetchData = () => {
-    fetch('')
+    fetch('https://api.tronalddump.io/random/quote')
       .then(results => results.json())
       .then(results => this.setState({data: results}));
   }
@@ -66,10 +66,12 @@ class App extends Component {
           <p id="text" className={this.isBackDark() ? 'white' : 'black'}>{this.state.data.quote} 404 (Not Found) </p>
           <p id="author" className={this.isBackDark() ? 'white' : 'black'}>{this.state.data.author} 404 (Not Found)</p>
           </div>
+          <div className="button-container">
           <button id="new-quote" onClick={this.handleClick}>New Quote</button>
           <button>
           <a id="tweet-quote" href={"https://twitter.com/intent/tweet?text=" + this.state.data.quote + " ~ " + this.state.data.author}>Tweet Quote</a>
           </button>
+          </div>
         </header>
       </div>
     );
